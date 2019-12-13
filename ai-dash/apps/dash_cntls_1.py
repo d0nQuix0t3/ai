@@ -20,7 +20,11 @@ from app import page_logo
 
 from . import app_templates, app_controls, app_models
 
+from .blox import default_tile_blox_1 as dtb1
+from .blox import default_chart_line as dcl
+#from . import blox as blox
 
+#from blox import default_tile_blox_1 as dtb1
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
@@ -193,7 +197,8 @@ def update_production_text(well_statuses, well_types, year_slider):
         Input("app-page-check", "value"),
         Input("app-page-id", "value"),
         Input("app-page-name", "value"),
-        Input("app-page-url", "value")
+        Input("app-page-url", "value"),
+        #CONTROL INPUT PLACEHOLDER (AGGREGATE DATA)
     ]
 )
 def page_callback(app_pg_check, app_pg_id, app_pg_name, app_pg_url):
@@ -202,16 +207,20 @@ def page_callback(app_pg_check, app_pg_id, app_pg_name, app_pg_url):
         page_info = app_models.page_configuration_details(app_pg_id)
     else:
         page_info = {'page_name':'AI DASH', 'page_subname':app_pg_name}
+
+
     #PAGE TITLE/SUBTILTE
     page_title = page_info['page_name']
     page_subtitle = page_info['page_subname']
+
     #CONFIG - FILTER BLOCK
     config_block = app_controls.page_config_block1()
+
     #TILES
-    tile1_text, tile1_value = "Tile No. 1", 1
-    tile2_text, tile2_value = "Tile No. 2", 2
-    tile3_text, tile3_value = "Tile No. 3", 3
-    tile4_text, tile4_value = "Tile No. 4", 4
+    tile1_text, tile1_value = dtb1.blox_main()
+    tile2_text, tile2_value = dtb1.blox_main()
+    tile3_text, tile3_value = dtb1.blox_main()
+    tile4_text, tile4_value = dtb1.blox_main()
     tile_row = app_templates.tile_row_1x4(tile1_text, tile1_value, tile2_text, tile2_value, tile3_text, tile3_value, tile4_text, tile4_value)
 
     #ROW 1

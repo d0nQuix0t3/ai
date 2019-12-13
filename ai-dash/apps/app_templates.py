@@ -45,7 +45,11 @@ def page_details_block(page_id, page_name, page_url, page_type, page_mode):
 
 def row_major_block():
     row_major_block = html.Div(
-                    [dcc.Graph(id="row_major_block")],
+                    [
+                        #CONTENT GOES HERE
+                        dcc.Graph(id="row_major_block")
+                        
+                        ],
                     className="pretty_container seven columns",
                 )
     return row_major_block

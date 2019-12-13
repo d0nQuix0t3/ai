@@ -80,28 +80,28 @@ create_page_layout = html.Div(children=[
 
         html.Div([
         html.P([
-            html.Label('Please provide a name for your page (Must Be Unique):', style={'font-size': '20px', 'text-align': 'left'}),
-            dcc.Input(id='page-name', placeholder='Enter Page Name...', type='text', style={'width': '500px', 'text-align': 'center'}),
+            html.Label('Please provide a name for your page:', style={'font-size': '20px', 'text-align': 'left'}),
+            dcc.Input(id='page-name', placeholder='Enter Page Name (i.e. "Project Name")', type='text', style={'width': '750px','font-size': '16px'}),
             html.Label('Page Name already taken. Please assign a different name.', id='name-val', style={'visibility': 'hidden'}),
         ],
-        style={'width': '500px', 'margin-right': 'auto',
+        style={'width': '750px', 'margin-right': 'auto',
             'margin-left': 'auto', 'text-align': 'center'}),
         html.Br(),
         html.P([
-            html.Label('Please provide a Sub Name/Header for your page:', style={'font-size': '20px', 'text-align': 'left'}),
-            dcc.Input(id='page-subname', placeholder='Enter Page Name...', type='text', style={'width': '500px', 'text-align': 'center'}),
+            html.Label('Please provide a secondary header / name for your page:', style={'font-size': '20px', 'text-align': 'left'}),
+            dcc.Input(id='page-subname', placeholder='Enter Secondary Page Name (i.e. "Sub Project Name")', type='text', style={'width': '750px','font-size': '16px'}),
             #html.Label('Page Name already taken. Please assign a different name.', id='name-val', style={'visibility': 'hidden'}),
         ],
-        style={'width': '500px', 'margin-right': 'auto',
+        style={'width': '750px', 'margin-right': 'auto',
             'margin-left': 'auto', 'text-align': 'center'}),
         html.Br(),
 
         html.P([
             html.Label('Page URL (Must Be Unique):', style={'font-size': '20px', 'text-align': 'left'}),
-            dcc.Input(id='page-url', placeholder='Enter Page URL...', type='text', style={'width': '500px', 'text-align': 'center'}),
+            dcc.Input(id='page-url', placeholder='Enter Page URL (i.e. "project-name")', type='text', style={'width': '750px','font-size': '16px'}),
             html.Label('URL already taken. Please assign a different url.', id='url-val', style={'visibility': 'hidden'}),
         ],
-        style={'width': '500px', 'margin-right': 'auto',
+        style={'width': '750px', 'margin-right': 'auto',
             'margin-left': 'auto', 'text-align': 'center'}),
 
         html.Br(),
@@ -112,12 +112,13 @@ create_page_layout = html.Div(children=[
             dcc.Dropdown(
                 id='page-template',
                 options=template_dd,
-                placeholder='Select Page Template...',
+                placeholder='Select Page Template From Drop Down',
+                style={'width': '750px', 'font-size': '16px'}
             ),
             html.Label('Please select a template.', id='temp-val', style={'visibility': 'hidden'}),
         ],
-        style={'width': '500px', 'margin-right': 'auto',
-            'margin-left': 'auto', 'text-align': 'center'}),
+        style={'width': '750px', 'margin-right': 'auto',
+            'margin-left': 'auto'}),
         # 'margin-left': '40px', 'text-align': 'center'}),
 
         html.Br(),
@@ -126,20 +127,20 @@ create_page_layout = html.Div(children=[
             html.Label('Page Description:', style={'font-size': '20px', 'text-align': 'left'}),
             dcc.Textarea(
                 id='page-desc',
-                placeholder='Enter Page Description...',
+                placeholder='Enter Page Description (i.e. Project ABC is about xyz and is utilizng the qrs metrics to track overall performance and efficiency of the project.)',
                 #value='',
-                style={'width': '500px', 'text-align': 'center'}
+                style={'width': '750px', 'font-size': '16px'}
             ) 
-            #dcc.Input(id='template_type3', value="Page URL...", type='text', style={'width': '500px', 'text-align': 'center'}),
+            #dcc.Input(id='template_type3', value="Page URL...", type='text', style={'width': '750px', 'text-align': 'center'}),
         ],
-        style={'width': '500px', 'margin-right': 'auto',
+        style={'width': '750px', 'margin-right': 'auto',
             'margin-left': 'auto', 'text-align': 'center'}),
         html.Br(),
         html.P([
             html.Button('Create Page', id='create-page-btn'),
-            #dcc.Input(id='template_type3', value="Page URL...", type='text', style={'width': '500px', 'text-align': 'center'}),
+            #dcc.Input(id='template_type3', value="Page URL...", type='text', style={'width': '750px', 'text-align': 'center'}),
         ],
-        style={'width': '500px', 'margin-right': 'auto',
+        style={'width': '750px', 'margin-right': 'auto',
             'margin-left': 'auto', 'text-align': 'center'}),
 
         ],
