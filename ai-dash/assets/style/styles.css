@@ -1,0 +1,172 @@
+/* [data-dash-is-loading="true"]::before{
+  content: "Loading...";
+  display: inline-block;
+  color: magenta;
+  visibility: visible;
+}
+*/
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 0.5;
+  }
+}
+._dash-loading-callback {
+  font-family: sans-serif;
+  padding-top: 50px;
+  color: rgb(90, 90, 90);
+  
+  /* The banner */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  cursor: progress;
+  
+  opacity: 0;
+  background-color: rgb(168, 190, 233);
+  /* Delay animation by 1s to prevent flashing 
+     and smoothly transition the animation over 0.5s 
+   */
+  -moz-animation: fadein 0.25s ease-in 0.5s forwards; /* Firefox */
+  -webkit-animation: fadein 0.25s ease-in 0.5s forwards; /* Safari and Chrome */
+  -o-animation: fadein 0.25s ease-in 0.5s forwards; /* Opera */
+    animation: fadein 0.25s ease-in 0.5s forwards;
+  }
+
+.js-plotly-plot .plotly .modebar {
+  padding-top: 5%;
+  margin-right: 3.5%;
+}
+
+body {
+  background-color: #f2f2f2;
+  margin: 2%;
+}
+
+.two.columns {
+  width: 16.25%;
+}
+
+.column,
+.columns {
+  margin-left: 0.5%;
+}
+
+.pretty_container {
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+
+.bare_container {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.dcc_control {
+  margin: 0;
+  padding: 5px;
+  width: calc(100%-40px);
+}
+
+.control_label {
+  margin: 0;
+  padding: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  width: calc(100%-40px);
+}
+
+.rc-slider {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.container-display {
+  display: flex;
+}
+
+#individual_graph,
+#aggregate_graph {
+  width: calc(100% - 30px);
+  position: absolute;
+}
+
+#count_graph {
+  position: absolute;
+  height: calc(100% - 30px);
+  width: calc(100% - 30px);
+}
+
+#main_block_container {
+  flex: 5;
+  position: relative;
+}
+
+#header {
+  align-items: center;
+}
+
+#learn-more-button {
+  text-align: center;
+  height: 55px !important;
+  padding: 0 20px;
+  text-transform: none;
+  font-size: 15px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 0px;
+}
+#title {
+  text-align: center;
+}
+
+.mini_container {
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+
+#right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+#aggregate_data {
+  align-items: center;
+}
+
+#oil {
+  flex: 1;
+}
+
+
+#tripleContainer {
+  display: flex;
+  flex: 3;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#pie_graph > div > div > svg:nth-child(3) > g.infolayer > g.legend {
+  pointer-events: all;
+  transform: translate(30px, 349px);
+}

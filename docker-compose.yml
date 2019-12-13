@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    dashboard:
+        hostname: ai-dashboard
+        container_name: ai-dashboard
+        build:
+            dockerfile: ai-dash.dockerfile
+            context: $PWD
+        volumes:
+            - ./ai-dash:/code
+        environment: 
+            - DASH_PORT=$DASH_PORT
+            - DASH_DEBUG=$DASH_DEBUG
+        ports:
+            - $DASH_PORT:$DASH_PORT
+        
