@@ -38,9 +38,9 @@ PATH = pathlib.Path(__file__).parent
 page_layout = html.Div(
     [
         #PAGE STORAGE
-        dcc.Store(id="page-controller-data"),
+        dcc.Store(id="page-controller-data-edit"),
         #TRIGGER JAVASCRIPT FILE FOR GRAPH RESIZING
-        html.Div(id="output-clientside"),
+        html.Div(id="output-clientside-edit"),
         #TITLE BAR
         html.Div(
             [
@@ -66,12 +66,12 @@ page_layout = html.Div(
                             [
                                 html.H3(
                                     "PAGE TITLE",
-                                    id='page-title',
+                                    id='page-title-edit',
                                     style={"margin-bottom": "0px"},
                                 ),
                                 html.H5(
                                     "Page Subtitle", 
-                                    id='page-subtitle',
+                                    id='page-subtitle-edit',
                                     style={"margin-top": "0px"}, 
                                     className="pageSubHeader"
                                 ),
@@ -98,10 +98,10 @@ page_layout = html.Div(
         ),
         html.Div(
             [
-                html.Div(id="config-filter-block", className="pretty_container four columns"),
+                html.Div(id="config-filter-block-edit", className="pretty_container four columns"),
                 html.Div(
                     [
-                        html.Div(children=[], id="tiles1x4",className="row container-display"),
+                        html.Div(children=[], id="tiles1x4-edit",className="row container-display"),
                         
                         html.Div(
                             [dcc.Graph(id="counXt_graph")],
@@ -115,21 +115,21 @@ page_layout = html.Div(
             ],
             className="row flex-display",
         ),
-        html.Div(id="row1", className="row flex-display"),
-        html.Div(id="row2", className="row flex-display"),
-        html.Div(id="row3", className="row flex-display"),
-        html.Div(id="row4", className="row flex-display"),
-        html.Div(id="row5", className="row flex-display"),
-        html.Div(id="row6", className="row flex-display"),
-        html.Div(id="row7", className="row flex-display"),
-        html.Div(id="row8", className="row flex-display"),
-        html.Div(id="row9", className="row flex-display"),
-        html.Div(id="row10", className="row flex-display"),
+        html.Div(id="row1-edit", className="row flex-display"),
+        html.Div(id="row2-edit", className="row flex-display"),
+        html.Div(id="row3-edit", className="row flex-display"),
+        html.Div(id="row4-edit", className="row flex-display"),
+        html.Div(id="row5-edit", className="row flex-display"),
+        html.Div(id="row6-edit", className="row flex-display"),
+        html.Div(id="row7-edit", className="row flex-display"),
+        html.Div(id="row8-edit", className="row flex-display"),
+        html.Div(id="row9-edit", className="row flex-display"),
+        html.Div(id="row10-edit", className="row flex-display"),
         
         #FOOTER - LIVE / EDIT
         daq.BooleanSwitch(
-            id='live-edit-toggle',
-            on=False,
+            id='edit-toggle',
+            on=True,
             label='CONFIGURE',
             labelPosition='bottom'
         ),
@@ -137,7 +137,7 @@ page_layout = html.Div(
         #FOOTER - PAGE CALLBACK KEY
         #page_details_block
         dcc.Checklist(
-                id="app-page-check",
+                id="app-page-check-edit",
                 options=[
                     {'label': 'PAGE CALLBACK', 'value': 'PAGE'}
                 ],
@@ -152,12 +152,11 @@ page_layout = html.Div(
 
 
 
-
 #PAGE RESIZING CALLBACK
 #########################################################################################################################################
 app.clientside_callback(
     ClientsideFunction(namespace="clientside", function_name="resize"),
-    Output("output-clientside", "children"),
+    Output("output-clientside-edit", "children"),
     [Input("count_graph", "figure")],
 )
 
@@ -165,7 +164,7 @@ app.clientside_callback(
 #PAGE CONTROLS CALLBACK
 #########################################################################################################################################
 @app.callback(
-    Output("page-controller-data", "data"),
+    Output("page-controller-data-edit", "data"),
     [
         Input("well_statuses", "value"),
         Input("well_types", "value"),
@@ -181,33 +180,31 @@ def update_production_text(well_statuses, well_types, year_slider):
 
 
 
-
-
 #PAGE ENTITIES CALLBACK
 #########################################################################################################################################
 @app.callback(
     [
-        Output("page-title", "children"),
-        Output("page-subtitle", "children"),
-        Output("config-filter-block", "children"),
-        Output("tiles1x4", "children"),
-        Output("row1", "children"),
-        Output("row2", "children"),
-        Output("row3", "children"),
-        Output("row4", "children"),
-        Output("row5", "children"),
-        Output("row6", "children"),
-        Output("row7", "children"),
-        Output("row8", "children"),
-        Output("row9", "children"),
-        Output("row10", "children")
+        Output("page-title-edit", "children"),
+        Output("page-subtitle-edit", "children"),
+        Output("config-filter-block-edit", "children"),
+        Output("tiles1x4-edit", "children"),
+        Output("row1-edit", "children"),
+        Output("row2-edit", "children"),
+        Output("row3-edit", "children"),
+        Output("row4-edit", "children"),
+        Output("row5-edit", "children"),
+        Output("row6-edit", "children"),
+        Output("row7-edit", "children"),
+        Output("row8-edit", "children"),
+        Output("row9-edit", "children"),
+        Output("row10-edit", "children")
     ],
     [
-        Input("app-page-check", "value"),
+        Input("app-page-check-edit", "value"),
         Input("app-page-id", "value"),
         Input("app-page-name", "value"),
         Input("app-page-url", "value"),
-        Input("live-edit-toggle", "on")
+        Input("edit-toggle", "on")
         #Input("page-controller-data", "data")
         #CONTROL INPUT PLACEHOLDER (AGGREGATE DATA)
     ]
@@ -231,10 +228,10 @@ def page_callback(app_pg_check, app_pg_id, app_pg_name, app_pg_url, live_edit_to
     config_block = app_controls.page_config_block1()
 
     #TILES
-    tile1_text, tile1_value = dtb1.blox_main()
-    tile2_text, tile2_value = dtb1.blox_main()
-    tile3_text, tile3_value = dtb1.blox_main()
-    tile4_text, tile4_value = dtb1.blox_main()
+    tile1_text, tile1_value = tbe.blox_main(1)
+    tile2_text, tile2_value = tbe.blox_main(2)
+    tile3_text, tile3_value = tbe.blox_main(3)
+    tile4_text, tile4_value = tbe.blox_main(4)
     
     tile_row = app_templates.tile_row_1x4(tile1_text, tile1_value, tile2_text, tile2_value, tile3_text, tile3_value, tile4_text, tile4_value)
 

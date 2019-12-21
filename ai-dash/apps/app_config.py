@@ -11,7 +11,9 @@ APP_PATH=pathlib.Path(__file__).parent
 APP_DB_PATH=APP_PATH.joinpath(APP_DB).resolve()
 
 def app_url_router(pathname, x_df):
+    print(pathname)
     from . import dash_cntls_1
+    from . import dash_cntls_1_edit
     #SET DEFAULT RETURN 404/ADD PAGE/HOME
     page_id = 0
     page_name = "404"
@@ -22,18 +24,27 @@ def app_url_router(pathname, x_df):
     page_details_default = app_templates.page_details_block(page_id, page_name, page_url, page_type, page_mode)
     url_page_layout = app_404.app_404_layout
     page_found = False
+    page_details = page_details_default
     for i, row in x_df.iterrows():
         x_id = row['page_id']
         x_name = row['page_name']
         x_url = row['page_url']
         x_type = row['page_type']
         x_mode = "LIVE"
-        page_details = app_templates.page_details_block(x_id, x_name, x_url, x_type, x_mode)
+        
     
         if pathname == x_url:
             page_found = True
+            page_details = app_templates.page_details_block(x_id, x_name, x_url, x_type, x_mode)
             url_page_layout = dash_cntls_1.page_layout
-     
+        
+
+        mod_x_url = x_url + str('/edit')
+        if pathname == mod_x_url:
+            x_mode = "EDIT"
+            page_found = True
+            page_details = app_templates.page_details_block(x_id, x_name, x_url, x_type, x_mode)
+            url_page_layout = dash_cntls_1_edit.page_layout
     if page_found:
         return page_details, url_page_layout
     else:
