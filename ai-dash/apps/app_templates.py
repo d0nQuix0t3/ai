@@ -100,3 +100,114 @@ def tile_row_1x4(t1_t, t1_v, t2_t, t2_v, t3_t, t3_v, t4_t, t4_v):
     return tile_row_1x4 
 
 
+def row_minor_blox_selector(blox_id):
+    blox_id_str = 'blox_input_' + str(blox_id)
+    blox_header_str = 'BLOX #' + str(blox_id)
+    ddv = html.Div(
+                    [
+                        html.P(blox_header_str, className="controlsHeader"),
+                        html.Div(style={'height':'80px'}),
+                        dcc.Dropdown(
+                            id=blox_id_str,
+                            options=[
+                                {'label': 'New York City', 'value': 'NYC'},
+                                {'label': 'Montreal', 'value': 'MTL'},
+                                {'label': 'San Francisco', 'value': 'SF'}
+                            ],
+                            value='NYC'
+                        ),
+                        html.Div(style={'height':'80px'}),
+                    ],
+                    className="pretty_container five columns",
+                )
+    return ddv
+
+
+def row_major_blox_selector(blox_id):
+    blox_id_str = 'blox_input_' + str(blox_id)
+    blox_header_str = 'BLOX #' + str(blox_id)
+    ddv = html.Div(
+                    [
+                        html.P(blox_header_str, className="controlsHeader"),
+                        html.Div(style={'height':'80px'}),
+                        dcc.Dropdown(
+                            id=blox_id_str,
+                            options=[
+                                {'label': 'New York City', 'value': 'NYC'},
+                                {'label': 'Montreal', 'value': 'MTL'},
+                                {'label': 'San Francisco', 'value': 'SF'}
+                            ],
+                            value='NYC'
+                        ),
+                        html.Div(style={'height':'80px'}),
+                    ],
+                    className="pretty_container seven columns",
+                )
+    return ddv
+
+
+def row_tri_blox_selector(blox_id):
+    blox_id_str = 'blox_input_' + str(blox_id)
+    blox_header_str = 'BLOX #' + str(blox_id)
+    ddv = html.Div(
+                    [
+                        html.P(blox_header_str, className="controlsHeader"),
+                        html.Div(style={'height':'80px'}),
+                        dcc.Dropdown(
+                            id=blox_id_str,
+                            options=[
+                                {'label': 'New York City', 'value': 'NYC'},
+                                {'label': 'Montreal', 'value': 'MTL'},
+                                {'label': 'San Francisco', 'value': 'SF'}
+                            ],
+                            value='NYC'
+                        ),
+                        html.Div(style={'height':'80px'}),
+                    ],
+                    className="pretty_container four columns",
+                )
+    return ddv
+    
+
+def row_full_blox_selector(blox_id):
+    blox_id_str = 'blox_input_' + str(blox_id)
+    blox_header_str = 'BLOX #' + str(blox_id)
+    ddv = html.Div(
+                    [
+                        html.P(blox_header_str, className="controlsHeader"),
+                        html.Div(style={'height':'80px'}),
+                        dcc.Dropdown(
+                            id=blox_id_str,
+                            options=[
+                                {'label': 'New York City', 'value': 'NYC'},
+                                {'label': 'Montreal', 'value': 'MTL'},
+                                {'label': 'San Francisco', 'value': 'SF'}
+                            ],
+                            value='NYC'
+                        ),
+                        html.Div(style={'height':'80px'}),
+                    ],
+                    className="pretty_container thirteen columns",
+                )
+    return ddv
+
+def main_chart_blox_selector(blox_id):
+    blox_id_str = 'blox_input_' + str(blox_id)
+    blox_header_str = 'MAIN CHART'
+    ddv = html.Div(
+                    [
+                        html.P(blox_header_str, className="controlsHeader"),
+                        html.Div(style={'height':'80px'}),
+                        dcc.Dropdown(
+                            id=blox_id_str,
+                            options=[
+                                {'label': 'New York City', 'value': 'NYC'},
+                                {'label': 'Montreal', 'value': 'MTL'},
+                                {'label': 'San Francisco', 'value': 'SF'}
+                            ],
+                            value='NYC'
+                        ),
+                        html.Div(style={'height':'80px'}),
+                    ]
+                )
+    return ddv

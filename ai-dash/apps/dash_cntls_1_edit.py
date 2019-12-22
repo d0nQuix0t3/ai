@@ -19,7 +19,7 @@ import datetime as dt
 from app import app
 from app import page_logo
 
-from . import app_templates, app_controls, app_models
+from . import app_templates, app_controls, app_models, app_config
 
 from .blox import default_tile_blox_1 as dtb1
 from .blox import tile_blox_edit as tbe
@@ -188,6 +188,7 @@ def update_production_text(well_statuses, well_types, year_slider):
         Output("page-subtitle-edit", "children"),
         Output("config-filter-block-edit", "children"),
         Output("tiles1x4-edit", "children"),
+        Output("main_block_container", "children"),
         Output("row1-edit", "children"),
         Output("row2-edit", "children"),
         Output("row3-edit", "children"),
@@ -222,32 +223,38 @@ def page_callback(app_pg_check, app_pg_id, app_pg_name, app_pg_url, live_edit_to
     page_subtitle = page_info['page_subname']
     
     ########################################################################################
-    
+    blox_selector_list = app_config.blox_selector_list()
     
     #CONFIG - FILTER BLOCK
-    config_block = app_controls.page_config_block1()
+    config_block = app_controls.page_config_blox_selector()
+    blox_cur_selection = ""
 
     #TILES
-    tile1_text, tile1_value = tbe.blox_main(1)
-    tile2_text, tile2_value = tbe.blox_main(2)
-    tile3_text, tile3_value = tbe.blox_main(3)
-    tile4_text, tile4_value = tbe.blox_main(4)
+    tile1_text, tile1_value = tbe.blox_main(1, blox_selector_list, blox_cur_selection)
+    tile2_text, tile2_value = tbe.blox_main(2, blox_selector_list, blox_cur_selection)
+    tile3_text, tile3_value = tbe.blox_main(3, blox_selector_list, blox_cur_selection)
+    tile4_text, tile4_value = tbe.blox_main(4, blox_selector_list, blox_cur_selection)
     
     tile_row = app_templates.tile_row_1x4(tile1_text, tile1_value, tile2_text, tile2_value, tile3_text, tile3_value, tile4_text, tile4_value)
 
+    #MAIN CHART
+    main_chart = dcc.Graph(id="counXt_graph")
+    main_chart = app_templates.main_chart_blox_selector(0)
+
     #ROW 1
-    block1 = app_templates.row_major_block()
-    block2 = app_templates.row_minor_block()
+    #block1 = app_templates.row_major_block()
+    block1 = app_templates.row_major_blox_selector(1)
+    block2 = app_templates.row_minor_blox_selector(2)
     row1 = [block1, block2]
 
     #ROW 2
-    block3 = app_templates.row_full_block()
+    block3 = app_templates.row_full_blox_selector(3)
     row2 = block3
 
     #ROW 3
-    block4 = app_templates.row_tri_block()
-    block5 = app_templates.row_tri_block()
-    block6 = app_templates.row_tri_block()
+    block4 = app_templates.row_tri_blox_selector(4)
+    block5 = app_templates.row_tri_blox_selector(5)
+    block6 = app_templates.row_tri_blox_selector(6)
     row3 = [block4, block5, block6]
 
     #ROW 4
@@ -273,7 +280,7 @@ def page_callback(app_pg_check, app_pg_id, app_pg_name, app_pg_url, live_edit_to
 
 
 
-    return page_title, page_subtitle, config_block, tile_row, row1, row2, row3, row4, row5, row6, row7, row8, row9, row10
+    return page_title, page_subtitle, config_block, tile_row, main_chart, row1, row2, row3, row4, row5, row6, row7, row8, row9, row10
 
 
 

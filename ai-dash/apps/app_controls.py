@@ -121,3 +121,22 @@ def page_config_block1():
                         ),
                     ]
     return page_config_block
+
+
+def page_config_blox_selector():
+    page_config_block = [
+                        html.P("Controls & Filters:", className="controlsHeader"),
+                        html.Div(style={'height':'80px'}),
+                        dcc.Dropdown(
+                            id='cont-filt-blox-selector',
+                            options=[
+                                {'label': 'New York City', 'value': 'NYC'},
+                                {'label': 'Montreal', 'value': 'MTL'},
+                                {'label': 'San Francisco', 'value': 'SF'}
+                            ],
+                            value='NYC'
+                        ),
+                        html.Div(style={'height':'80px'}),
+                        
+                    ]
+    return page_config_block

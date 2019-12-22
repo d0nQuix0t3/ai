@@ -3,12 +3,19 @@ import pathlib
 from . import app_templates
 from . import app_404
 
-
+import glob
 
 APP_VERSION=0.5
 APP_DB="app.db"
 APP_PATH=pathlib.Path(__file__).parent
 APP_DB_PATH=APP_PATH.joinpath(APP_DB).resolve()
+
+def blox_selector_list():
+    blox_path = APP_PATH.joinpath('blox').resolve()
+    blox_files = [f for f in glob.glob(str(blox_path) + "**/*.py", recursive=True)]
+    blox_files = [s.strip(str(blox_path)) for s in blox_files]
+    return blox_files
+
 
 def app_url_router(pathname, x_df):
     print(pathname)
