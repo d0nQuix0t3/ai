@@ -123,18 +123,14 @@ def page_config_block1():
     return page_config_block
 
 
-def page_config_blox_selector():
+def page_config_blox_selector(blox_selector_list, blox_cur_selection):
     page_config_block = [
                         html.P("Controls & Filters:", className="controlsHeader"),
                         html.Div(style={'height':'80px'}),
                         dcc.Dropdown(
                             id='cont-filt-blox-selector',
-                            options=[
-                                {'label': 'New York City', 'value': 'NYC'},
-                                {'label': 'Montreal', 'value': 'MTL'},
-                                {'label': 'San Francisco', 'value': 'SF'}
-                            ],
-                            value='NYC'
+                            options=[{'label':blox, 'value':blox} for blox in blox_selector_list],
+                            value=blox_cur_selection
                         ),
                         html.Div(style={'height':'80px'}),
                         

@@ -12,8 +12,10 @@ APP_DB_PATH=APP_PATH.joinpath(APP_DB).resolve()
 
 def blox_selector_list():
     blox_path = APP_PATH.joinpath('blox').resolve()
-    blox_files = [f for f in glob.glob(str(blox_path) + "**/*.py", recursive=True)]
-    blox_files = [s.strip(str(blox_path)) for s in blox_files]
+    print(str(blox_path))
+    blox_files = [f for f in glob.glob(str(blox_path) + "/*.py", recursive=True)]
+    print(blox_files)
+    blox_files = [s.strip(str(APP_PATH)) for s in blox_files]
     return blox_files
 
 

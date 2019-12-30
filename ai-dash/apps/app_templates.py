@@ -100,7 +100,7 @@ def tile_row_1x4(t1_t, t1_v, t2_t, t2_v, t3_t, t3_v, t4_t, t4_v):
     return tile_row_1x4 
 
 
-def row_minor_blox_selector(blox_id):
+def row_minor_blox_selector(blox_id, blox_selector_list, blox_cur_selection):
     blox_id_str = 'blox_input_' + str(blox_id)
     blox_header_str = 'BLOX #' + str(blox_id)
     ddv = html.Div(
@@ -109,12 +109,8 @@ def row_minor_blox_selector(blox_id):
                         html.Div(style={'height':'80px'}),
                         dcc.Dropdown(
                             id=blox_id_str,
-                            options=[
-                                {'label': 'New York City', 'value': 'NYC'},
-                                {'label': 'Montreal', 'value': 'MTL'},
-                                {'label': 'San Francisco', 'value': 'SF'}
-                            ],
-                            value='NYC'
+                            options=[{'label':blox, 'value':blox} for blox in blox_selector_list],
+                            value=blox_cur_selection
                         ),
                         html.Div(style={'height':'80px'}),
                     ],
@@ -123,7 +119,7 @@ def row_minor_blox_selector(blox_id):
     return ddv
 
 
-def row_major_blox_selector(blox_id):
+def row_major_blox_selector(blox_id, blox_selector_list, blox_cur_selection):
     blox_id_str = 'blox_input_' + str(blox_id)
     blox_header_str = 'BLOX #' + str(blox_id)
     ddv = html.Div(
@@ -132,12 +128,8 @@ def row_major_blox_selector(blox_id):
                         html.Div(style={'height':'80px'}),
                         dcc.Dropdown(
                             id=blox_id_str,
-                            options=[
-                                {'label': 'New York City', 'value': 'NYC'},
-                                {'label': 'Montreal', 'value': 'MTL'},
-                                {'label': 'San Francisco', 'value': 'SF'}
-                            ],
-                            value='NYC'
+                            options=[{'label':blox, 'value':blox} for blox in blox_selector_list],
+                            value=blox_cur_selection
                         ),
                         html.Div(style={'height':'80px'}),
                     ],
@@ -146,7 +138,7 @@ def row_major_blox_selector(blox_id):
     return ddv
 
 
-def row_tri_blox_selector(blox_id):
+def row_tri_blox_selector(blox_id, blox_selector_list, blox_cur_selection):
     blox_id_str = 'blox_input_' + str(blox_id)
     blox_header_str = 'BLOX #' + str(blox_id)
     ddv = html.Div(
@@ -155,12 +147,8 @@ def row_tri_blox_selector(blox_id):
                         html.Div(style={'height':'80px'}),
                         dcc.Dropdown(
                             id=blox_id_str,
-                            options=[
-                                {'label': 'New York City', 'value': 'NYC'},
-                                {'label': 'Montreal', 'value': 'MTL'},
-                                {'label': 'San Francisco', 'value': 'SF'}
-                            ],
-                            value='NYC'
+                            options=[{'label':blox, 'value':blox} for blox in blox_selector_list],
+                            value=blox_cur_selection
                         ),
                         html.Div(style={'height':'80px'}),
                     ],
@@ -169,7 +157,7 @@ def row_tri_blox_selector(blox_id):
     return ddv
     
 
-def row_full_blox_selector(blox_id):
+def row_full_blox_selector(blox_id, blox_selector_list, blox_cur_selection):
     blox_id_str = 'blox_input_' + str(blox_id)
     blox_header_str = 'BLOX #' + str(blox_id)
     ddv = html.Div(
@@ -178,12 +166,8 @@ def row_full_blox_selector(blox_id):
                         html.Div(style={'height':'80px'}),
                         dcc.Dropdown(
                             id=blox_id_str,
-                            options=[
-                                {'label': 'New York City', 'value': 'NYC'},
-                                {'label': 'Montreal', 'value': 'MTL'},
-                                {'label': 'San Francisco', 'value': 'SF'}
-                            ],
-                            value='NYC'
+                            options=[{'label':blox, 'value':blox} for blox in blox_selector_list],
+                            value=blox_cur_selection
                         ),
                         html.Div(style={'height':'80px'}),
                     ],
@@ -191,7 +175,7 @@ def row_full_blox_selector(blox_id):
                 )
     return ddv
 
-def main_chart_blox_selector(blox_id):
+def main_chart_blox_selector(blox_id, blox_selector_list, blox_cur_selection):
     blox_id_str = 'blox_input_' + str(blox_id)
     blox_header_str = 'MAIN CHART'
     ddv = html.Div(
@@ -200,12 +184,8 @@ def main_chart_blox_selector(blox_id):
                         html.Div(style={'height':'80px'}),
                         dcc.Dropdown(
                             id=blox_id_str,
-                            options=[
-                                {'label': 'New York City', 'value': 'NYC'},
-                                {'label': 'Montreal', 'value': 'MTL'},
-                                {'label': 'San Francisco', 'value': 'SF'}
-                            ],
-                            value='NYC'
+                            options=[{'label':blox, 'value':blox} for blox in blox_selector_list],
+                            value=blox_cur_selection
                         ),
                         html.Div(style={'height':'80px'}),
                     ]

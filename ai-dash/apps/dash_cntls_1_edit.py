@@ -226,8 +226,9 @@ def page_callback(app_pg_check, app_pg_id, app_pg_name, app_pg_url, live_edit_to
     blox_selector_list = app_config.blox_selector_list()
     
     #CONFIG - FILTER BLOCK
-    config_block = app_controls.page_config_blox_selector()
     blox_cur_selection = ""
+    config_block = app_controls.page_config_blox_selector(blox_selector_list, blox_cur_selection)
+    
 
     #TILES
     tile1_text, tile1_value = tbe.blox_main(1, blox_selector_list, blox_cur_selection)
@@ -239,22 +240,22 @@ def page_callback(app_pg_check, app_pg_id, app_pg_name, app_pg_url, live_edit_to
 
     #MAIN CHART
     main_chart = dcc.Graph(id="counXt_graph")
-    main_chart = app_templates.main_chart_blox_selector(0)
+    main_chart = app_templates.main_chart_blox_selector(0, blox_selector_list, blox_cur_selection)
 
     #ROW 1
     #block1 = app_templates.row_major_block()
-    block1 = app_templates.row_major_blox_selector(1)
-    block2 = app_templates.row_minor_blox_selector(2)
+    block1 = app_templates.row_major_blox_selector(1, blox_selector_list, blox_cur_selection)
+    block2 = app_templates.row_minor_blox_selector(2, blox_selector_list, blox_cur_selection)
     row1 = [block1, block2]
 
     #ROW 2
-    block3 = app_templates.row_full_blox_selector(3)
+    block3 = app_templates.row_full_blox_selector(3, blox_selector_list, blox_cur_selection)
     row2 = block3
 
     #ROW 3
-    block4 = app_templates.row_tri_blox_selector(4)
-    block5 = app_templates.row_tri_blox_selector(5)
-    block6 = app_templates.row_tri_blox_selector(6)
+    block4 = app_templates.row_tri_blox_selector(4, blox_selector_list, blox_cur_selection)
+    block5 = app_templates.row_tri_blox_selector(5, blox_selector_list, blox_cur_selection)
+    block6 = app_templates.row_tri_blox_selector(6, blox_selector_list, blox_cur_selection)
     row3 = [block4, block5, block6]
 
     #ROW 4
